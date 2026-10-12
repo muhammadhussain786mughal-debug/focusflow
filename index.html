@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101828">
+  <title>FocusFlow — Make space for deep work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="FocusFlow home"><span class="brand-mark"><i></i><i></i><i></i></span><span>focusflow<span class="brand-dot">.</span></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <button class="nav-link active" data-filter="all"><span class="nav-icon">▦</span> Overview <span class="nav-count" id="allCount">0</span></button>
+        <button class="nav-link" data-filter="today"><span class="nav-icon">◷</span> Today <span class="nav-count" id="todayCount">0</span></button>
+        <button class="nav-link" data-filter="completed"><span class="nav-icon">✓</span> Completed</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="focus-card">
+          <div class="focus-orb">✦</div>
+          <p class="focus-title">Small steps.<br>Big progress.</p>
+          <p class="focus-copy">Your next breakthrough starts with one focused task.</p>
+          <button id="focusBtn" class="focus-button">Start focus session <span>↗</span></button>
+        </div>
+        <button class="profile">
+          <div class="avatar">MH</div><div class="profile-text"><strong>Muhammad Hussain</strong><span>Personal workspace</span></div><span class="profile-menu">•••</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div>
+        <div class="top-actions"><span class="date-chip" id="dateChip">Monday, October 12</span><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☼</button><div class="avatar top-avatar">MH</div></div>
+      </header>
+
+      <section class="welcome-row">
+        <div><div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL WORKSPACE</div><h1>Make today <span>count.</span></h1><p class="subtitle">A little progress each day adds up to big results.</p></div>
+        <button class="primary-button" id="addTaskTop"><span>＋</span> Add new task</button>
+      </section>
+
+      <section class="stats-grid" aria-label="Task statistics">
+        <article class="stat-card"><div class="stat-top"><span>Total tasks</span><span class="stat-icon purple">▦</span></div><div class="stat-number" id="totalStat">0</div><div class="stat-foot"><span class="trend">↗</span> Keep your momentum going</div><div class="stat-line purple-line"><span id="totalLine"></span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Completed</span><span class="stat-icon green">✓</span></div><div class="stat-number" id="completedStat">0</div><div class="stat-foot"><span class="trend">↗</span> One win at a time</div><div class="stat-line green-line"><span id="completedLine"></span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>In progress</span><span class="stat-icon orange">◷</span></div><div class="stat-number" id="progressStat">0</div><div class="stat-foot">Tasks waiting for your focus</div><div class="stat-line orange-line"><span id="progressLine"></span></div></article>
+        <article class="stat-card progress-stat"><div class="stat-top"><span>Daily progress</span><span class="stat-icon blue">✦</span></div><div class="progress-stat-row"><div class="stat-number" id="progressPercent">0%</div><div class="mini-ring" id="miniRing"><span>✦</span></div></div><div class="stat-foot">You're building a great habit</div><div class="stat-line blue-line"><span id="dailyLine"></span></div></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="tasks-panel panel">
+          <div class="panel-heading"><div><h2 id="taskHeading">Your tasks</h2><p>Keep your priorities clear and simple.</p></div><button class="text-button" id="clearCompleted">Clear completed</button></div>
+          <div class="task-toolbar"><div class="filter-tabs"><button class="filter-tab active" data-filter="all">All tasks</button><button class="filter-tab" data-filter="today">Today</button><button class="filter-tab" data-filter="completed">Completed</button></div><label class="search-box"><span>⌕</span><input type="search" id="searchInput" placeholder="Search tasks..." aria-label="Search tasks"></label></div>
+          <div class="task-list" id="taskList"></div>
+          <div class="empty-state" id="emptyState" hidden><div class="empty-icon">✦</div><h3>Nothing on your plate</h3><p>Add a task and turn your plans into progress.</p><button class="primary-button small" id="emptyAdd">＋ Create a task</button></div>
+          <div class="panel-footer"><span id="taskFooter">0 tasks</span><span><span class="keyboard-key">↵</span> Progress over perfection</span></div>
+        </div>
+        <aside class="right-column">
+          <section class="week-panel panel"><div class="panel-heading compact"><div><h2>This week</h2><p>Your consistency at a glance.</p></div><span class="week-icon">▤</span></div><div class="week-chart" id="weekChart" aria-label="Weekly completed task chart"></div><div class="chart-legend"><span><i></i> Tasks completed</span><strong id="weekTotal">0 this week</strong></div></section>
+          <section class="quote-panel"><div class="quote-mark">“</div><p class="quote-text">You don't have to see the whole staircase, just take the first step.</p><div class="quote-bottom"><span class="quote-line"></span><span>ONE DAY AT A TIME</span></div><div class="quote-decoration">✳</div></section>
+        </aside>
+      </section>
+      <footer class="app-footer"><span>© 2026 FocusFlow</span><span>Designed for focus <span class="heart">♥</span> built for progress.</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="taskModal" aria-hidden="true">
+    <form class="task-modal" id="taskForm">
+      <button type="button" class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-eyebrow">MAKE IT HAPPEN</div><h2 id="modalTitle">Add a new task</h2><p class="modal-subtitle">Break your goals into clear, actionable steps.</p>
+      <label class="field-label" for="taskTitle">Task name</label><input id="taskTitle" class="form-field" required maxlength="90" placeholder="e.g. Finish portfolio homepage">
+      <label class="field-label" for="taskDescription">Description <span>(optional)</span></label><textarea id="taskDescription" class="form-field" rows="3" maxlength="180" placeholder="Add a little context..."></textarea>
+      <div class="form-row"><div><label class="field-label" for="taskCategory">Category</label><select id="taskCategory" class="form-field"><option>Development</option><option>Design</option><option>Learning</option><option>Personal</option></select></div><div><label class="field-label" for="taskPriority">Priority</label><select id="taskPriority" class="form-field"><option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option></select></div></div>
+      <label class="field-label" for="taskDue">Due date</label><input id="taskDue" type="date" class="form-field">
+      <button type="submit" class="primary-button modal-submit" id="saveTask">Create task <span>→</span></button>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status"><span>✓</span><p id="toastMessage">Task created</p></div>
+  <div class="focus-overlay" id="focusOverlay" aria-hidden="true"><div class="focus-modal"><button class="modal-close" id="closeFocus" aria-label="Close">×</button><div class="focus-sparkle">✦</div><div class="modal-eyebrow">TIME TO FOCUS</div><h2 id="timerDisplay">25:00</h2><p>One task. One session. No distractions.</p><div class="timer-controls"><button class="primary-button" id="timerStart">Start timer</button><button class="secondary-button" id="timerReset">Reset</button></div><span class="focus-note">Take a breath. You've got this.</span></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
